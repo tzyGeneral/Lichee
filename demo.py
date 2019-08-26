@@ -10,3 +10,5 @@ print(Tools.get_cleanHtml_str('<div>（2015）</div>'))
 print(Tools.dateStrTodatetime("2019-08-26"))
 
 print(Tools.getMaxDic({'d1': 2,'d2': 4,'d3':3},reverse=False))
+
+print(Tools.date2Zodiac(5,12))
