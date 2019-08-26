@@ -20,6 +20,18 @@ class Tools:
         """
         return dict(zip(keysList, valuesList))
 
+    @staticmethod
+    def getMaxDic(dic, reverse=True):
+        """
+        获取一个字典中值最大的元素组成新的单个元素字典 {'d1': 2,'d2': 4,'d3':3}
+        :param dic:
+        :return:
+        """
+        maxDic = {}
+        s = [k for k in sorted(dic,key=dic.__getitem__, reverse=reverse)][0]
+        maxDic[s] = dic.get(str(s))
+        return maxDic
+
     @classmethod
     def get_cssEncryption_str(cls, strData):
         """
