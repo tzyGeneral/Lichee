@@ -1,5 +1,7 @@
 import re
 import datetime
+import zipfile
+import os
 
 
 class Tools:
@@ -92,5 +94,34 @@ class Tools:
         d = ((1,20),(2,19),(3,21),(4,21),(5,21),(6,22),(7,23),(8,23),(9,23),(10,23),(11,23),(12,23))
         return n[len(list(filter(lambda y: y <= (month, day), d))) % 12]
 
+    @staticmethod
+    def zipOneFile(dirpath, outFullName):
+        """
+        压缩指定文件
+        :param dirpath: 目标文件  like: like: C:\Users\zhenyuan\Desktop\233.txt
+        :param outFullName: 压缩文件保存路径 + xxx.zip  like: C:\Users\zhenyuan\Desktop\233.zip
+        :return: None
+        """
+        zip = zipfile.ZipFile(outFullName, "w", zipfile.ZIP_DEFLATED)
+        baseName = os.path.basename(dirpath)
+        fpath = dirpath
+        zip.write(fpath, arcname=baseName)
+        zip.close()
+
+    @staticmethod
+    def zipManyFile(dirpath, outFullName):
+        """
+        压缩指定文件夹
+        :param dirpath: 目标文件夹路径  like: C:\Users\zhenyuan\Desktop\233
+        :param outFullName: 压缩文件保存路径 + xxx.zip  like: C:\Users\zhenyuan\Desktop\233.zip
+        :return: None
+        """
+        zip = zipfile.ZipFile(outFullName, "w", zipfile.ZIP_DEFLATED)
+        for path, dirnames, filenames in os.walk(dirpath):
+            # 去掉目标跟路径，只对目标文件夹下边的文件及文件夹进行压缩
+            fpath = path.replace(dirpath, '')
+            for filename in filenames:
+                zip.write(os.path.join(path, filename), os.path.join(fpath, filename))
+        zip.close()
 
 
