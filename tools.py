@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 import re
 import datetime
 import zipfile
@@ -98,10 +99,12 @@ class Tools:
     def zipOneFile(dirpath, outFullName):
         """
         压缩指定文件
-        :param dirpath: 目标文件  like: like: C:\Users\zhenyuan\Desktop\233.txt
-        :param outFullName: 压缩文件保存路径 + xxx.zip  like: C:\Users\zhenyuan\Desktop\233.zip
+        :param dirpath:
+        :param outFullName:
         :return: None
         """
+        # dirpath 目标文件  like: C:\Users\zhenyuan\Desktop\233.txt
+        # outFullName: 压缩文件保存路径 + xxx.zip  like: C:\Users\zhenyuan\Desktop\233.zip
         zip = zipfile.ZipFile(outFullName, "w", zipfile.ZIP_DEFLATED)
         baseName = os.path.basename(dirpath)
         fpath = dirpath
@@ -112,10 +115,12 @@ class Tools:
     def zipManyFile(dirpath, outFullName):
         """
         压缩指定文件夹
-        :param dirpath: 目标文件夹路径  like: C:\Users\zhenyuan\Desktop\233
-        :param outFullName: 压缩文件保存路径 + xxx.zip  like: C:\Users\zhenyuan\Desktop\233.zip
+        :param dirpath:
+        :param outFullName:
         :return: None
         """
+        # dirpath: 目标文件夹路径  like: C:\Users\zhenyuan\Desktop\233
+        # outFullName: 压缩文件保存路径 + xxx.zip  like: C:\Users\zhenyuan\Desktop\233.zip
         zip = zipfile.ZipFile(outFullName, "w", zipfile.ZIP_DEFLATED)
         for path, dirnames, filenames in os.walk(dirpath):
             # 去掉目标跟路径，只对目标文件夹下边的文件及文件夹进行压缩
