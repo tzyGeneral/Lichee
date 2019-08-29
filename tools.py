@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 import re
 import datetime
 import zipfile
@@ -128,5 +128,19 @@ class Tools:
             for filename in filenames:
                 zip.write(os.path.join(path, filename), os.path.join(fpath, filename))
         zip.close()
+
+    @staticmethod
+    def getDayStr(dayNum):
+        """
+        获取从当天开始往回推dayNum天的时间字符串
+        :param dayNum:
+        :return:
+        """
+        dayStrList = []
+        for index in range(1,dayNum):
+            day = (datetime.datetime.now() - datetime.timedelta(days=index)).date().__str__()
+            dayStrList.append(day)
+        return dayStrList
+
 
 
