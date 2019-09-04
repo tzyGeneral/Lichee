@@ -14,3 +14,7 @@ print(Tools.getMaxDic({'d1': 2,'d2': 4,'d3':3},reverse=False))
 print(Tools.date2Zodiac(5,12))
 
 print(Tools.getDayStr(50))
+# md5加密
+print(Tools.getMd5EncodeData("fdhsjfsdhf"))
+# hash加密
+print(Tools.getHashEncodeData("fsdfsdf"))
