@@ -3,6 +3,9 @@ import re
 import datetime
 import zipfile
 import os
+import random
+import hashlib
+import time
 
 
 class Tools:
@@ -141,6 +144,50 @@ class Tools:
             day = (datetime.datetime.now() - datetime.timedelta(days=index)).date().__str__()
             dayStrList.append(day)
         return dayStrList
+
+    @staticmethod
+    def getRandomStr(randomlength=16):
+        """
+        生成一个指定长度的随机字符串
+        :param randomlength:
+        :return:
+        """
+        random_str = ''
+        base_str = 'ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0123456789'
+        length = len(base_str) - 1
+        for i in range(randomlength):
+            random_str += base_str[random.randint(0, length)]
+        return random_str
+
+    @staticmethod
+    def getHashEncodeData(string: str):
+        """
+        hash加密字符串
+        :param string:
+        :return:
+        """
+        hash_sha1 = hashlib.sha1(string.encode('utf-8')).hexdigest()
+        return hash_sha1
+
+    @staticmethod
+    def getMd5EncodeData(string: str):
+        """
+        Md5加密字符串
+        :param string:
+        :return:
+        """
+        hash_md5 = hashlib.md5(string.encode('utf-8')).hexdigest()
+        return hash_md5
+
+    @staticmethod
+    def getUTCtimesmap():
+        """
+        获取当前UTC时间的时间戳
+        :return:
+        """
+        return str(int(round(time.time() * 1000)))
+
+
 
 
 
