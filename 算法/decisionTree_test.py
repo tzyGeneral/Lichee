@@ -59,7 +59,7 @@ def chooseBestFeatureToSplit(dataSet):  # 选择最优的分类特征
     return bestFeature
 
 
-def majorityCnt(classList):    #按分类后类别数量排序，比如：最后分类为2男1女，则判定为男；
+def majorityCnt(classList):    # 按分类后类别数量排序，比如：最后分类为2男1女，则判定为男；
     classCount = {}
     for vote in classList:
         if vote not in classCount.keys():
