@@ -187,6 +187,52 @@ class Tools:
         """
         return str(int(round(time.time() * 1000)))
 
+    @staticmethod
+    def get2ListIntersection(list1: list, list2: list) ->list:
+        """
+        获取两个列表的交集
+        l1 = [1,2,3,4,5,6,7]
+        l2 = [6,7,8,9,0]
+        :return:
+        """
+        return list(set(list1).difference(set(list2)))
+
+    @staticmethod
+    def getListProduct(lis: list) ->int:
+        """
+        获取一个列表的乘积
+        :param lis:
+        :return:
+        """
+        from functools import reduce
+        product = reduce((lambda x, y: x*y), lis)
+        return product
+
+    @staticmethod
+    def getNameDic(list):
+        """
+        将一个列表中的小列表按照第一个元素为键生成字典
+        colours = (
+            ('Yasoob', 'Yellow'),
+            ('Ali', 'Blue'),
+            ('Arham', 'Green'),
+            ('Ali', 'Black'),
+            ('Yasoob', 'Red'),
+            ('Ahmed', 'Silver'),
+        )
+        :param list:
+        :return:
+        """
+        from collections import defaultdict
+        favourite_colours = defaultdict(list)
+        for key, value in list:
+            favourite_colours[key].append(value)
+
+        return favourite_colours
+
+
+
+
 
 
 
