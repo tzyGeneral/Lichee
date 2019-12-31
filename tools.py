@@ -209,7 +209,7 @@ class Tools:
         return product
 
     @staticmethod
-    def getNameDic(list):
+    def getNameDic(lis):
         """
         将一个列表中的小列表按照第一个元素为键生成字典
         colours = (
@@ -225,10 +225,20 @@ class Tools:
         """
         from collections import defaultdict
         favourite_colours = defaultdict(list)
-        for key, value in list:
+        for key, value in lis:
             favourite_colours[key].append(value)
 
         return favourite_colours
+
+l = Tools.getNameDic([
+            ('Yasoob', 'Yellow'),
+            ('Ali', 'Blue'),
+            ('Arham', 'Green'),
+            ('Ali', 'Black'),
+            ('Yasoob', 'Red'),
+            ('Ahmed', 'Silver'),
+])
+print(l)
 
 
 
