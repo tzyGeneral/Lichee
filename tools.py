@@ -230,6 +230,17 @@ class Tools:
 
         return favourite_colours
 
+    @staticmethod
+    def listToInt(intList: list) -> int:
+        """
+        将列表里所有的整数组成一个整数
+        :param intList:
+        :return:
+        """
+        a = [i * 10 ** index for index, i in enumerate(intList[::-1])]
+        b = sum(a)
+        return b
+
 l = Tools.getNameDic([
             ('Yasoob', 'Yellow'),
             ('Ali', 'Blue'),
