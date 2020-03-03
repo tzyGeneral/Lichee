@@ -18,3 +18,5 @@ print(Tools.getDayStr(50))
 print(Tools.getMd5EncodeData("fdhsjfsdhf"))
 # hash加密
 print(Tools.getHashEncodeData("fsdfsdf"))
+# 将嵌套的列表展开为一维列表
+print(Tools.manyListToOne([[1,2,3],[4,5]], [6,7]))
