@@ -6,6 +6,7 @@ import os
 import random
 import hashlib
 import time
+from collections.abc import *
 
 
 class Tools:
@@ -240,6 +241,23 @@ class Tools:
         a = [i * 10 ** index for index, i in enumerate(intList[::-1])]
         b = sum(a)
         return b
+
+    @classmethod
+    def manyListToOne(cls, lst, out_list=None) -> list:
+        """
+        让多个嵌套列表展开为一维列表
+        :param lst:
+        :return:
+        """
+        if out_list is None:
+            out_list = []
+        for i in lst:
+            if isinstance(i, Iterable):  # 判定i是否可迭代
+                cls.manyListToOne(i, out_list)  # 尾数递归
+            else:
+                out_list.append(i)
+        return out_list
+
 
 l = Tools.getNameDic([
             ('Yasoob', 'Yellow'),
