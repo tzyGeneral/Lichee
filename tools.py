@@ -258,6 +258,20 @@ class Tools:
                 out_list.append(i)
         return out_list
 
+    @classmethod
+    def splitList(cls, initList: list, childernListLen: int) -> list:
+        """
+        将列表分割为指定大小的小列表
+        :param initList: 待分割的原始列表
+        :param childernListLen: 分割大小
+        :return:
+        """
+        list_of_group = zip(*(iter(initList),) * childernListLen)
+        end_list = [list(i) for i in list_of_group]
+        count = len(initList) % childernListLen
+        end_list.append(initList[-count:]) if count != 0 else end_list
+        return end_list
+
 
 l = Tools.getNameDic([
             ('Yasoob', 'Yellow'),
