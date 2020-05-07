@@ -272,6 +272,34 @@ class Tools:
         end_list.append(initList[-count:]) if count != 0 else end_list
         return end_list
 
+    @classmethod
+    def rankDicList(cls, inputList: list, sortKey: str, reverseType=True) -> list:
+        """
+        将列表中有字典，根据字典中的某个值排序
+        例: inputList = [{'name':'zs','age':12},{'name':'ls','age':16},{'name':'ww','age':10}]
+        :param inputList:
+        :return:
+        """
+        keyCheck = inputList[0].get(sortKey, '')
+        if not keyCheck:
+            assert KeyError("排序的键不存在")
+        return sorted(inputList, key=lambda x: x[sortKey], reverse=reverseType)
+
+    @classmethod
+    def rankDicListTwo(cls, inputList: list, sortKeyOne: str, sortKeyTwo: str, reverseType=True) -> list:
+        """
+        将列表中有字典，根据字典中的某个值排序，如果第一个条件相同，则按照第二个条件排序
+        :param inputList:
+        :param sortKeyOne:
+        :param sortKeyTwo:
+        :return:
+        """
+        keyCheckOne, keyCheckTwo = inputList[0].get(sortKeyOne, ''), inputList[0].get(sortKeyTwo, '')
+        if not keyCheckOne or not keyCheckTwo:
+            assert KeyError("排序的键不存在")
+        return sorted(inputList, key=lambda x: (x[sortKeyOne], x[sortKeyTwo]), reverse=reverseType)
+
+
 
 l = Tools.getNameDic([
             ('Yasoob', 'Yellow'),
