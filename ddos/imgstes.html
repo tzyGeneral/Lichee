@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proxy Image</title>
+    <script>
+        let requestImage = function (url, element) {
+            let request = new XMLHttpRequest();
+            request.responseType = 'blob';
+            request.open('get', url, true);
+            request.setRequestHeader('referer', 'https://www.mangabz.com/');
+            request.onreadystatechange = e => {
+                if (request.readyState == XMLHttpRequest.DONE && request.status == 200) {
+                    element.src = URL.createObjectURL(request.response);
+                    element.onload = () => {
+                        URL.revokeObjectURL(element.src);
+                    }
+                }
+            };
+            request.send(null);
+        }
+
+        class AuthImg extends HTMLImageElement {
+            constructor() {
+                super();
+                this._lastUrl = '';
+            }
+
+            static get observedAttributes() {
+                return ['authSrc'];
+            }
+
+            connectedCallback() {
+                let url = this.getAttribute('authSrc');
+                if (url !== this._lastUrl) {
+                    this._lastUrl = url;
+                    requestImage(url, this);
+                }
+                console.log('connectedCallback() is called.');
+            }
+        }
+
+        window.customElements.define('auth-img', AuthImg, {extends: 'img'});
+    </script>
+</head>
+<body>
+<img width="100" height="100" is="auth-img"
+     authSrc="https://image.mangabz.com/1/73/10411/5_2929.jpg?cid=10411&key=64b2e06fef6e229b328e59ca8ed6301d&type=1">
+</body>
+</html>
+

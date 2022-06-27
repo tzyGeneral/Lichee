@@ -15,8 +15,9 @@ print(Tools.date2Zodiac(5,12))
 
 print(Tools.getDayStr(50))
 # md5加密
-print(Tools.getMd5EncodeData("fdhsjfsdhf"))
+print(Tools.getMd5EncodeData("Hello, world!!!"))
 # hash加密
-print(Tools.getHashEncodeData("fsdfsdf"))
+# print(Tools.getHashEncodeData("c246898"))
+print("8d6d4c7e45b8ee230d6ebd9b9dcf05f5")
 # 将嵌套的列表展开为一维列表
 print(Tools.manyListToOne([[1,2,3],[4,5]], [6,7]))
